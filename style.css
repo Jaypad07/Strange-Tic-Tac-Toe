@@ -1,0 +1,90 @@
+body {
+    background-color: burlywood;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50vh auto;
+
+}
+
+#container {
+    width: fit-content;
+    height: fit-content;
+    background-color: black;
+    border: 10px solid gray;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "TL TM TR"
+                         "ML MM MR"
+                         "BL BM BR";
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    
+}
+
+#TL {
+    grid-area: TL;
+    background-color: #339e9c;
+    border-right: 3px solid black;
+    border-bottom: 2px solid black;
+    
+}
+
+#TM {
+    grid-area: TM;
+    background-color: gray;
+    
+}
+
+#TR {
+    grid-area: TR;
+    background-color: #339e9c;
+    border-left: 1px solid black;
+    border-bottom: 2px solid black;
+}
+
+#ML {
+    grid-area: ML;
+    background-color: gray;
+    
+}
+
+#MM {
+    grid-area: MM;
+    background-color: #339e9c;
+}
+
+#MR {
+    grid-area: MR;
+    background-color: gray;
+}
+
+#BL {
+    grid-area: BL;
+    background-color: #339e9c;
+    border-top: 1px solid black;
+    border-right: 3px solid black;
+}
+
+#BM {
+    grid-area: BM;
+    background-color: gray;
+}
+
+#BR {
+    grid-area: BR;
+    background-color: #339e9c;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.symContain {
+    margin: 0 0 0 0;
+}
