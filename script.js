@@ -14,25 +14,6 @@ const board = [  //Maybe move to front of newGame() and remove reset or make res
 //Buttons
 strtBttn.addEventListener(`click`, newGame);
 
-
-//Adds an EventListener to each div that creates an X or O when clicked, switches players, & assigns a player value to the board array
-divElems.forEach((divEle, divPos) => {
-    divEle.addEventListener("click", () => {
-        TicTacToe.switchPlayer();
-        console.log(currentPlayer);
-        if (currentPlayer === TicTacToe.boardPlayers[0]) { //current player
-            symbolX(divEle);
-            gamePoints(divPos, 1);
-        }else {
-            symbolO(divEle);
-            gamePoints(divPos, 2);
-        }
-        console.log(board);
-        console.log(board[0].includes(0));
-        // if ((!board[0].includes(0)) && (!board[1].includes(0)) && (!board[2].includes(0))) alert("The game has ended in a Tie! Start New Game to play again");  
-    });
-});
-
 //FUNCTIONS
 function symbolX(pos) { //function to place symbol X on board, div position is passed.
     let text = document.createElement("blockquote");
@@ -40,7 +21,6 @@ function symbolX(pos) { //function to place symbol X on board, div position is p
     text.classList.add("symContain");
     text.innerText = "X";
     text.style.fontSize = "100px";
-
 }
 
 function symbolO(pos) { //function to place symbol O on board, div position is passed.
@@ -58,6 +38,21 @@ function newGame() { // clears prev players, asks for new player names, resets b
     TicTacToe.resetBoard();
     TicTacToe.turn = 0;
     currentPlayer = TicTacToe.boardPlayers[0];
+
+    //Adds an EventListener to each div that will create an X or O when clicked, switch players, & assign a player value to the board array.
+divElems.forEach((divEle, divPos) => {
+    divEle.addEventListener("click", () => {
+        TicTacToe.switchPlayer();
+        console.log(currentPlayer);
+        if (currentPlayer === TicTacToe.boardPlayers[0]) { //current player
+            symbolX(divEle);
+            gamePoints(divPos, 1);
+        }else {
+            symbolO(divEle);
+            gamePoints(divPos, 2);
+        }
+    }, {once: true}); 
+});
 }
 
 
@@ -182,9 +177,7 @@ function displayWinner(num) {
     }else alert("Player" + num + " wins the game!");
 }
 
-function displayTie() {
-    
-}
+
 
 //CLASSES
 class Player {
