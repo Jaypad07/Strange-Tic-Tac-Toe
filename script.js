@@ -15,15 +15,19 @@ const board = [
 strtBttn.addEventListener(`click`, newGame);
 
 
-//Adds an EventListener to each div that creates an X or O when clicked.
-divElems.forEach(divPos => {
-    divPos.addEventListener("click", () => {
+//Adds an EventListener to each div that creates an X or O when clicked, switches players, & assigns a player value to the board array
+divElems.forEach((divEle, divPos) => {
+    divEle.addEventListener("click", () => {
         TicTacToe.switchPlayer();
         console.log(currentPlayer);
         if (currentPlayer === TicTacToe.boardPlayers[0]) { //current player
-            symbolX(divPos);
-        }else symbolO(divPos);
-        
+            symbolX(divEle);
+            gamePoints(divPos, 1);
+        }else {
+            symbolO(divEle);
+            gamePoints(divPos, 2);
+        } 
+        console.log(board);
     });
 });
 
@@ -45,38 +49,57 @@ function symbolO(pos) { //function to place symbol O on board, div position is p
     text.style.fontSize = "100px";
 }
 
-//Clears board of all symbols and asks for player names.
-function newGame() {
+
+function newGame() { // clears prev players, asks for new player names, resets board, and resets timer.
     TicTacToe.removePlayers(); 
     TicTacToe.addPlayers();
-    currentPlayer = TicTacToe.boardPlayers[0];
+    TicTacToe.resetBoard();
     TicTacToe.turn = 0;
-
-    divElems.forEach(divEle => {
-        if(divEle.hasChildNodes()) {
-            divEle.removeChild(divEle.firstChild);
-        }
-    });
+    currentPlayer = TicTacToe.boardPlayers[0];
 }
 
 
-//Function that checks if innertext of blockquotes is X or O this determines winner
-//Also all boxes will then change the letters to display Player 1 or 2 winns or Emojis?
-// function gamePoints(divPos) {
-//     divElems.forEach(divPos) {
-//         //convert HTML locations into objects to hold location and a point?
-//     }
+function gamePoints(divPos, num) { //This function assigns a player value to the 3x3 array based on where each player clicked.
+    console.log(divPos);
+    switch (divPos) {
+        case 0:
+            board[0][0] = num
+            break;
+        case 1 :
+            board[0][1] = num
+            break;
+        case 2 :
+            board[0][2] = num
+            break;
+        case 3 :
+            board[1][0] = num
+            break;
+        case 4 :
+            board[1][1] = num
+            break;
+        case 5 :
+            board[1][2] = num
+            break;
+        case 6 :
+            board[2][0] = num
+            break;
+        case 7 :
+            board[2][1] = num
+            break;
+        case 8 :
+            board[2][2] = num
+            break;
+    
+        default:
+            break;
+    }
+}
 
-//     for (let i = 0; i < divElems.length; i++) {
-//         const  = divElems[i];
-        
-//     }
-//     if (divEle) {
-        
-//     }
-// }
+function verticalWin() {
+    board[0][0]
+}
 
-
+//CLASSES
 class Player {
     constructor(name, player) {
         this.name = name;
@@ -105,6 +128,19 @@ class gameBoard {
         while (this.boardPlayers.length > 0) {
             this.boardPlayers.pop();
         }
+    }
+
+    resetBoard() { //clears score by setting array back to 0's and clears all visual symbols off board
+        for (let i = 0; i < board.length; i++) {
+             for (let j = 0; j < board.length; j++) {
+                board[i][j] = 0;
+             } 
+        }
+        divElems.forEach(divEle => {
+            if(divEle.hasChildNodes()) {
+                divEle.removeChild(divEle.firstChild);
+            }
+        });     
     }
 
     switchPlayer() {
