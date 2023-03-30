@@ -5,7 +5,7 @@ const divElems = document.querySelectorAll(`.box`);
 const strtBttn = document.querySelector(`#start`);
 
 // Three states: 0 = (inactive) default, 1 = (active) player1, 2 = (active)player2.
-const board = [
+const board = [  //Maybe move to front of newGame() and remove reset or make reset standalone button
     [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0]
@@ -60,34 +60,113 @@ function newGame() { // clears prev players, asks for new player names, resets b
 
 
 function gamePoints(divPos, num) { //This function assigns a player value to the 3x3 array based on where each player clicked.
-    console.log(divPos);
     switch (divPos) {
         case 0:
-            board[0][0] = num
+           board[0][0] = num;
+           if (board[0][0] === board[0][1] && board[0][0] === board[0][2]) {
+            console.log("Current player method wins");
+            break;
+           }else if (board[0][0] === board[1][0] && board[0][0] === board[2][0]) {
+            console.log("Current player method wins");
+            break;
+           }else if (board[0][0] === board[1][1] && board[0][0] === board[2][2]) {
+            console.log("Current player method wins");
+            break;
+           }
             break;
         case 1 :
-            board[0][1] = num
+            board[0][1] = num;
+            if (board[0][1] === board[0][0] && board[0][1] === board[0][2]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[0][1] === board[1][1] && board[0][1] === board[2][1]) {
+                console.log("Current player method wins");
+                break;
+               }
             break;
         case 2 :
-            board[0][2] = num
+            board[0][2] = num;
+            if (board[0][2] === board[0][1] && board[0][2] === board[0][0]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[0][2] === board[1][1] && board[0][2] === board[2][0]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[0][2] === board[1][2] && board[0][2] === board[2][2]) {
+                console.log("Current player method wins");
+                break;
+               }
             break;
         case 3 :
-            board[1][0] = num
+            board[1][0] = num;
+            if (board[1][0] === board[1][1] && board[1][0] === board[1][2]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[1][0] === board[0][0] && board[1][0] === board[2][0]) {
+                console.log("Current player method wins");
+                break;
+               }
             break;
         case 4 :
-            board[1][1] = num
+            board[1][1] = num;
+            if (board[1][1] === board[0][1] && board[1][1] === board[2][1]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[1][1] === board[1][0] && board[1][1] === board[1][2]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[1][1] === board[0][2] && board[1][1] === board[2][0]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[1][1] === board[0][0] && board[1][1] === board[2][2]) {
+                console.log("Current player method wins");
+               }
             break;
         case 5 :
-            board[1][2] = num
+            board[1][2] = num;
+            if (board[1][2] === board[0][2] && board[1][2] === board[2][2]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[1][2] === board[1][1] && board[1][2] === board[1][0]) {
+                console.log("Current player method wins");
+                break;
+               }
             break;
         case 6 :
-            board[2][0] = num
+            board[2][0] = num;
+            if (board[2][0] === board[1][0] && board[2][0] === board[0][0]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[2][0] === board[2][1] && board[2][0] === board[2][2]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[2][0] === board[1][1] && board[2][0] === board[0][2]) {
+                console.log("Current player method wins");
+                break;
+               }
             break;
         case 7 :
-            board[2][1] = num
+            board[2][1] = num;
+            if (board[2][1] === board[1][1] && board[2][1] === board[0][1]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[2][1] === board[2][0] && board[2][1] === board[2][2]) {
+                console.log("Current player method wins");
+                break;
+               }
             break;
         case 8 :
-            board[2][2] = num
+            board[2][2] = num;
+            if (board[2][2] === board[2][1] && board[2][2] === board[2][0]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[2][2] === board[1][2] && board[2][2] === board[0][2]) {
+                console.log("Current player method wins");
+                break;
+               }else if (board[2][2] === board[1][1] && board[2][2] === board[0][0]) {
+                console.log("Current player method wins");
+                break;
+               }
             break;
     
         default:
@@ -95,9 +174,9 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
     }
 }
 
-function verticalWin() {
-    board[0][0]
-}
+// function displayWinner() {
+    
+// }
 
 //CLASSES
 class Player {
