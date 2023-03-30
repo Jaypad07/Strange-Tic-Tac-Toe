@@ -26,8 +26,10 @@ divElems.forEach((divEle, divPos) => {
         }else {
             symbolO(divEle);
             gamePoints(divPos, 2);
-        } 
+        }
         console.log(board);
+        console.log(board[0].includes(0));
+        // if ((!board[0].includes(0)) && (!board[1].includes(0)) && (!board[2].includes(0))) alert("The game has ended in a Tie! Start New Game to play again");  
     });
 });
 
@@ -59,114 +61,114 @@ function newGame() { // clears prev players, asks for new player names, resets b
 }
 
 
-function gamePoints(divPos, num) { //This function assigns a player value to the 3x3 array based on where each player clicked.
+function gamePoints(divPos, num) { //This function assigns a player value to the 3x3 array and checks the win condition based on where each player clicks.
     switch (divPos) {
         case 0:
            board[0][0] = num;
            if (board[0][0] === board[0][1] && board[0][0] === board[0][2]) {
-            console.log("Current player method wins");
+            displayWinner(num);
             break;
            }else if (board[0][0] === board[1][0] && board[0][0] === board[2][0]) {
-            console.log("Current player method wins");
+            displayWinner(num);
             break;
            }else if (board[0][0] === board[1][1] && board[0][0] === board[2][2]) {
-            console.log("Current player method wins");
+            displayWinner(num);
             break;
-           }
+           }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 1 :
             board[0][1] = num;
             if (board[0][1] === board[0][0] && board[0][1] === board[0][2]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[0][1] === board[1][1] && board[0][1] === board[2][1]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
-               }
+               }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 2 :
             board[0][2] = num;
             if (board[0][2] === board[0][1] && board[0][2] === board[0][0]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[0][2] === board[1][1] && board[0][2] === board[2][0]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[0][2] === board[1][2] && board[0][2] === board[2][2]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
-               }
+               }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 3 :
             board[1][0] = num;
             if (board[1][0] === board[1][1] && board[1][0] === board[1][2]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[1][0] === board[0][0] && board[1][0] === board[2][0]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
-               }
+               }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 4 :
             board[1][1] = num;
             if (board[1][1] === board[0][1] && board[1][1] === board[2][1]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[1][1] === board[1][0] && board[1][1] === board[1][2]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[1][1] === board[0][2] && board[1][1] === board[2][0]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[1][1] === board[0][0] && board[1][1] === board[2][2]) {
-                console.log("Current player method wins");
-               }
+                displayWinner(num);
+               }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 5 :
             board[1][2] = num;
             if (board[1][2] === board[0][2] && board[1][2] === board[2][2]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[1][2] === board[1][1] && board[1][2] === board[1][0]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
-               }
+               }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 6 :
             board[2][0] = num;
             if (board[2][0] === board[1][0] && board[2][0] === board[0][0]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[2][0] === board[2][1] && board[2][0] === board[2][2]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[2][0] === board[1][1] && board[2][0] === board[0][2]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
-               }
+               }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 7 :
             board[2][1] = num;
             if (board[2][1] === board[1][1] && board[2][1] === board[0][1]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[2][1] === board[2][0] && board[2][1] === board[2][2]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
-               }
+               }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 8 :
             board[2][2] = num;
             if (board[2][2] === board[2][1] && board[2][2] === board[2][0]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[2][2] === board[1][2] && board[2][2] === board[0][2]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
                }else if (board[2][2] === board[1][1] && board[2][2] === board[0][0]) {
-                console.log("Current player method wins");
+                displayWinner(num);
                 break;
-               }
+               }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
     
         default:
@@ -174,9 +176,15 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
     }
 }
 
-// function displayWinner() {
+function displayWinner(num) {
+    if (num === 1) {
+        alert("Player" + num + " wins the game!"); //Can I change a font inside an alert?
+    }else alert("Player" + num + " wins the game!");
+}
+
+function displayTie() {
     
-// }
+}
 
 //CLASSES
 class Player {
