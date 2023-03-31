@@ -1,16 +1,10 @@
-// Rules: alert("TIC-TAC-TOE!\nPlace 3 consecutive symbols horizontally, vertically, or diagnolly to win\nPlayer 1, begin!");
+
 
 //Selectors of each div element
-const divElems = document.querySelectorAll(`.box`);
+let divCont = document.querySelector(`#container`);
+divCont.id = `container`;
+let divElems = document.querySelectorAll(`.box`);
 const strtBttn = document.querySelector(`#start`);
-
-// Three states: 0 = (inactive) default, 1 = (active) player1, 2 = (active)player2.
-const board = [  //Maybe move to front of newGame() and remove reset or make reset standalone button
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0]
-];
-
 //Buttons
 strtBttn.addEventListener(`click`, newGame);
 
@@ -33,134 +27,151 @@ function symbolO(pos) { //function to place symbol O on board, div position is p
 
 
 function newGame() { // clears prev players, asks for new player names, resets board, and resets timer.
+    
     TicTacToe.removePlayers(); 
     TicTacToe.addPlayers();
     TicTacToe.resetBoard();
     TicTacToe.turn = 0;
-    currentPlayer = TicTacToe.boardPlayers[0];
+    currentPlayer = TicTacToe.playersArray[0];
+    
+    // Adds an EventListener to each div that will create an X or O when clicked, switch players, & assign a player value to the board array.
+    divElems.forEach((divEle, divPos) => {
+        divEle.addEventListener("click", () => {
+            console.log("third");
+            TicTacToe.switchPlayer();
+            console.log(currentPlayer);
+            if (currentPlayer === TicTacToe.playersArray[0]) { //current player
+                symbolX(divEle);
+                gamePoints(divPos, 1);
+            }else {
+                symbolO(divEle);
+                gamePoints(divPos, 2);
+            }
+            console.log(TicTacToe.playersArray);
+            console.log(TicTacToe.board);
+        }, {once: true}); 
+    });
 
-    //Adds an EventListener to each div that will create an X or O when clicked, switch players, & assign a player value to the board array.
-divElems.forEach((divEle, divPos) => {
-    divEle.addEventListener("click", () => {
-        TicTacToe.switchPlayer();
-        console.log(currentPlayer);
-        if (currentPlayer === TicTacToe.boardPlayers[0]) { //current player
-            symbolX(divEle);
-            gamePoints(divPos, 1);
-        }else {
-            symbolO(divEle);
-            gamePoints(divPos, 2);
-        }
-    }, {once: true}); 
-});
 }
+
+function gameOver() {
+    
+}
+
+function displayWinner(num) {
+    if (num === 1) {
+        alert("Player" + num + " wins the game!"); //Can I change a font inside an alert? Display actual player name wins
+    }else alert("Player" + num + " wins the game!");
+
+}
+
 
 
 function gamePoints(divPos, num) { //This function assigns a player value to the 3x3 array and checks the win condition based on where each player clicks.
     switch (divPos) {
         case 0:
-           board[0][0] = num;
-           if (board[0][0] === board[0][1] && board[0][0] === board[0][2]) {
+           TicTacToe.board[0][0] = num;
+           if (TicTacToe.board[0][0] === TicTacToe.board[0][1] && TicTacToe.board[0][0] === TicTacToe.board[0][2]) {
             displayWinner(num);
             break;
-           }else if (board[0][0] === board[1][0] && board[0][0] === board[2][0]) {
+           }else if (TicTacToe.board[0][0] === TicTacToe.board[1][0] && TicTacToe.board[0][0] === TicTacToe.board[2][0]) {
             displayWinner(num);
             break;
-           }else if (board[0][0] === board[1][1] && board[0][0] === board[2][2]) {
+           }else if (TicTacToe.board[0][0] === TicTacToe.board[1][1] && TicTacToe.board[0][0] === TicTacToe.board[2][2]) {
             displayWinner(num);
             break;
            }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 1 :
-            board[0][1] = num;
-            if (board[0][1] === board[0][0] && board[0][1] === board[0][2]) {
+            TicTacToe.board[0][1] = num;
+            if (TicTacToe.board[0][1] === TicTacToe.board[0][0] && TicTacToe.board[0][1] === TicTacToe.board[0][2]) {
                 displayWinner(num);
                 break;
-               }else if (board[0][1] === board[1][1] && board[0][1] === board[2][1]) {
+               }else if (TicTacToe.board[0][1] === TicTacToe.board[1][1] && TicTacToe.board[0][1] === TicTacToe.board[2][1]) {
                 displayWinner(num);
                 break;
                }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 2 :
-            board[0][2] = num;
-            if (board[0][2] === board[0][1] && board[0][2] === board[0][0]) {
+            TicTacToe.board[0][2] = num;
+            if (TicTacToe.board[0][2] === TicTacToe.board[0][1] && TicTacToe.board[0][2] === TicTacToe.board[0][0]) {
                 displayWinner(num);
                 break;
-               }else if (board[0][2] === board[1][1] && board[0][2] === board[2][0]) {
+               }else if (TicTacToe.board[0][2] === TicTacToe.board[1][1] && TicTacToe.board[0][2] === TicTacToe.board[2][0]) {
                 displayWinner(num);
                 break;
-               }else if (board[0][2] === board[1][2] && board[0][2] === board[2][2]) {
+               }else if (TicTacToe.board[0][2] === TicTacToe.board[1][2] && TicTacToe.board[0][2] === TicTacToe.board[2][2]) {
                 displayWinner(num);
                 break;
                }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 3 :
-            board[1][0] = num;
-            if (board[1][0] === board[1][1] && board[1][0] === board[1][2]) {
+            TicTacToe.board[1][0] = num;
+            if (TicTacToe.board[1][0] === TicTacToe.board[1][1] && TicTacToe.board[1][0] === TicTacToe.board[1][2]) {
                 displayWinner(num);
                 break;
-               }else if (board[1][0] === board[0][0] && board[1][0] === board[2][0]) {
+               }else if (TicTacToe.board[1][0] === TicTacToe.board[0][0] && TicTacToe.board[1][0] === TicTacToe.board[2][0]) {
                 displayWinner(num);
                 break;
                }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 4 :
-            board[1][1] = num;
-            if (board[1][1] === board[0][1] && board[1][1] === board[2][1]) {
+            TicTacToe.board[1][1] = num;
+            if (TicTacToe.board[1][1] === TicTacToe.board[0][1] && TicTacToe.board[1][1] === TicTacToe.board[2][1]) {
                 displayWinner(num);
                 break;
-               }else if (board[1][1] === board[1][0] && board[1][1] === board[1][2]) {
+               }else if (TicTacToe.board[1][1] === TicTacToe.board[1][0] && TicTacToe.board[1][1] === TicTacToe.board[1][2]) {
                 displayWinner(num);
                 break;
-               }else if (board[1][1] === board[0][2] && board[1][1] === board[2][0]) {
+               }else if (TicTacToe.board[1][1] === TicTacToe.board[0][2] && TicTacToe.board[1][1] === TicTacToe.board[2][0]) {
                 displayWinner(num);
                 break;
-               }else if (board[1][1] === board[0][0] && board[1][1] === board[2][2]) {
+               }else if (TicTacToe.board[1][1] === TicTacToe.board[0][0] && TicTacToe.board[1][1] === TicTacToe.board[2][2]) {
                 displayWinner(num);
                }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 5 :
-            board[1][2] = num;
-            if (board[1][2] === board[0][2] && board[1][2] === board[2][2]) {
+            TicTacToe.board[1][2] = num;
+            if (TicTacToe.board[1][2] === TicTacToe.board[0][2] && TicTacToe.board[1][2] === TicTacToe.board[2][2]) {
                 displayWinner(num);
                 break;
-               }else if (board[1][2] === board[1][1] && board[1][2] === board[1][0]) {
+               }else if (TicTacToe.board[1][2] === TicTacToe.board[1][1] && TicTacToe.board[1][2] === TicTacToe.board[1][0]) {
                 displayWinner(num);
                 break;
                }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 6 :
-            board[2][0] = num;
-            if (board[2][0] === board[1][0] && board[2][0] === board[0][0]) {
+            TicTacToe.board[2][0] = num;
+            if (TicTacToe.board[2][0] === TicTacToe.board[1][0] && TicTacToe.board[2][0] === TicTacToe.board[0][0]) {
                 displayWinner(num);
                 break;
-               }else if (board[2][0] === board[2][1] && board[2][0] === board[2][2]) {
+               }else if (TicTacToe.board[2][0] === TicTacToe.board[2][1] && TicTacToe.board[2][0] === TicTacToe.board[2][2]) {
                 displayWinner(num);
                 break;
-               }else if (board[2][0] === board[1][1] && board[2][0] === board[0][2]) {
+               }else if (TicTacToe.board[2][0] === TicTacToe.board[1][1] && TicTacToe.board[2][0] === TicTacToe.board[0][2]) {
                 displayWinner(num);
                 break;
                }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 7 :
-            board[2][1] = num;
-            if (board[2][1] === board[1][1] && board[2][1] === board[0][1]) {
+            TicTacToe.board[2][1] = num;
+            if (TicTacToe.board[2][1] === TicTacToe.board[1][1] && TicTacToe.board[2][1] === TicTacToe.board[0][1]) {
                 displayWinner(num);
                 break;
-               }else if (board[2][1] === board[2][0] && board[2][1] === board[2][2]) {
+               }else if (TicTacToe.board[2][1] === TicTacToe.board[2][0] && TicTacToe.board[2][1] === TicTacToe.board[2][2]) {
                 displayWinner(num);
                 break;
                }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
             break;
         case 8 :
-            board[2][2] = num;
-            if (board[2][2] === board[2][1] && board[2][2] === board[2][0]) {
+            TicTacToe.board[2][2] = num;
+            if (TicTacToe.board[2][2] === TicTacToe.board[2][1] && TicTacToe.board[2][2] === TicTacToe.board[2][0]) {
                 displayWinner(num);
                 break;
-               }else if (board[2][2] === board[1][2] && board[2][2] === board[0][2]) {
+               }else if (TicTacToe.board[2][2] === TicTacToe.board[1][2] && TicTacToe.board[2][2] === TicTacToe.board[0][2]) {
                 displayWinner(num);
                 break;
-               }else if (board[2][2] === board[1][1] && board[2][2] === board[0][0]) {
+               }else if (TicTacToe.board[2][2] === TicTacToe.board[1][1] && TicTacToe.board[2][2] === TicTacToe.board[0][0]) {
                 displayWinner(num);
                 break;
                }else if (TicTacToe.turn === 9) alert("The game has ended in a Tie! Start New Game to play again");
@@ -170,13 +181,6 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
             break;
     }
 }
-
-function displayWinner(num) {
-    if (num === 1) {
-        alert("Player" + num + " wins the game!"); //Can I change a font inside an alert?
-    }else alert("Player" + num + " wins the game!");
-}
-
 
 
 //CLASSES
@@ -189,8 +193,14 @@ class Player {
 
 class gameBoard {
     constructor() {
-        this.boardPlayers = [];
+        this.playersArray = [];
         this.turn = 0;
+        this.board = [
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ];
+        
     }
 
     addPlayers() {  //Declares player objects and asks for player names.
@@ -200,35 +210,42 @@ class gameBoard {
         let p2Name = prompt("Please enter Player2's name");
         let player2 = new Player(p2Name, 2);
         
-        this.boardPlayers.push(player1);
-        this.boardPlayers.push(player2);
+        this.playersArray.push(player1);
+        this.playersArray.push(player2);
     }
 
     removePlayers() { //Removes players
-        while (this.boardPlayers.length > 0) {
-            this.boardPlayers.pop();
+        while (this.playersArray.length > 0) {
+            this.playersArray.pop();
         }
     }
 
-    resetBoard() { //clears score by setting array back to 0's and clears all visual symbols off board
-        for (let i = 0; i < board.length; i++) {
-             for (let j = 0; j < board.length; j++) {
-                board[i][j] = 0;
+
+    resetBoard() { //#1 Clears score by setting array back to 0's. #2 Clears all visual symbols off board. #3 Recreates all box nodes to remove eventlisteners. #4 Used to switch player turns and count turn timer
+        for (let i = 0; i < this.board.length; i++) {  //#1
+             for (let j = 0; j < this.board.length; j++) {
+                this.board[i][j] = 0;
              } 
         }
-        divElems.forEach(divEle => {
+        divElems.forEach(divEle => {  //#2
             if(divEle.hasChildNodes()) {
                 divEle.removeChild(divEle.firstChild);
             }
-        });     
+        });
+
+        divElems.forEach(divEle => { //#3
+            divEle.replaceWith(divEle.cloneNode(true));
+            divEle.classList.add(`box`);
+            
+        });
+        divElems = document.querySelectorAll(`.box`); //**Important** This is needed, as the first query variable does not hold the newly created boxes.
     }
 
     switchPlayer() {
-        if (this.turn % 2 == 0) {
-            currentPlayer = this.boardPlayers[0];
-        }else currentPlayer = this.boardPlayers[1];
+        if (this.turn % 2 == 0) { //#4
+            currentPlayer = this.playersArray[0];
+        }else currentPlayer = this.playersArray[1];
         this.turn++;
-        let totalTurns = 0 //Silver Feature
         return currentPlayer;
     }
 } 
