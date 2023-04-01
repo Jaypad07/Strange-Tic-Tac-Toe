@@ -1,71 +1,69 @@
-
-
 //Selectors of each div element
-let divCont = document.querySelector(`#container`);
-divCont.id = `container`;
 let divElems = document.querySelectorAll(`.box`);
 const strtBttn = document.querySelector(`#start`);
+const resetBttn = document.querySelector(`#reset`);
+let controller = new AbortController();
 //Buttons
 strtBttn.addEventListener(`click`, newGame);
+resetBttn.addEventListener(`click`, resetGame);
 
 //FUNCTIONS
 function symbolX(pos) { //function to place symbol X on board, div position is passed.
     let text = document.createElement("blockquote");
     pos.appendChild(text);
-    text.classList.add("symContain");
+    text.classList.add("symbolContain");
     text.innerText = "X";
     text.style.fontSize = "100px";
+    text.style.color = "black";
+    text.style.fontFamily = "strangerthings";
 }
 
 function symbolO(pos) { //function to place symbol O on board, div position is passed.
     let text = document.createElement("blockquote");
     pos.appendChild(text);
-    text.classList.add("symContain");
+    text.classList.add("symbolContain");
     text.innerText = "O";
     text.style.fontSize = "100px";
+    text.style.color = "black";
+    text.style.fontFamily = "strangerthings";
 }
 
 
 function newGame() { // clears prev players, asks for new player names, resets board, and resets timer.
-    
     TicTacToe.removePlayers(); 
     TicTacToe.addPlayers();
     TicTacToe.resetBoard();
     TicTacToe.turn = 0;
     currentPlayer = TicTacToe.playersArray[0];
-    
-    // Adds an EventListener to each div that will create an X or O when clicked, switch players, & assign a player value to the board array.
-    divElems.forEach((divEle, divPos) => {
-        divEle.addEventListener("click", () => {
-            console.log("third");
-            TicTacToe.switchPlayer();
-            console.log(currentPlayer);
-            if (currentPlayer === TicTacToe.playersArray[0]) { //current player
-                symbolX(divEle);
-                gamePoints(divPos, 1);
-            }else {
-                symbolO(divEle);
-                gamePoints(divPos, 2);
-            }
-            console.log(TicTacToe.playersArray);
-            console.log(TicTacToe.board);
-        }, {once: true}); 
-    });
-
+    controller = new AbortController();
+    TicTacToe.setBoard();
 }
 
-function gameOver() {
-    
+function resetGame() {
+    if (TicTacToe.turn === 0) {
+        alert("Push Start New Game");
+    }else {
+        TicTacToe.resetBoard();
+        TicTacToe.turn = 0;
+        currentPlayer = TicTacToe.playersArray[0];
+        controller = new AbortController();
+        TicTacToe.setBoard();
+    }
 }
+
+// function gameOver() {
+//     if (TicTacToe.turn === 9) {
+//         alert("The game has ended in a Tie! Start New Game to play again");
+//         controller.abort();
+//     } 
+// }
 
 function displayWinner(num) {
+    controller.abort();
     if (num === 1) {
-        alert("Player" + num + " wins the game!"); //Can I change a font inside an alert? Display actual player name wins
-    }else alert("Player" + num + " wins the game!");
-
+        alert(currentPlayer.name + " wins the game!"); //Can I change a font inside an alert? Display actual player name wins
+    }else alert(currentPlayer.name + " wins the game!");
 }
-
-
 
 function gamePoints(divPos, num) { //This function assigns a player value to the 3x3 array and checks the win condition based on where each player clicks.
     switch (divPos) {
@@ -220,27 +218,46 @@ class gameBoard {
         }
     }
 
+    setBoard() {
+        // Adds an EventListener to each div that will create an X or O when clicked, switch players, & assign a player value to the board array.
+    divElems.forEach((divEle, divPos) => {
+        divEle.addEventListener("click", () => {
+            TicTacToe.switchPlayer();
+            console.log(currentPlayer);
+            if (currentPlayer === TicTacToe.playersArray[0]) {
+                symbolX(divEle);
+                gamePoints(divPos, 1);
+            }else {
+                symbolO(divEle);
+                gamePoints(divPos, 2);
+            }
+            // console.log(TicTacToe.playersArray); *** DEBUG PURPOSES - REMOVE WHEN READY
+            // console.log(TicTacToe.board); ***REMOVE WHEN READY
+        }, {once: true, signal: controller.signal}); 
+    });
+    }
 
-    resetBoard() { //#1 Clears score by setting array back to 0's. #2 Clears all visual symbols off board. #3 Recreates all box nodes to remove eventlisteners. #4 Used to switch player turns and count turn timer
+
+    resetBoard() {  
+        //Clears score by setting array back to 0's.
         for (let i = 0; i < this.board.length; i++) {  //#1
              for (let j = 0; j < this.board.length; j++) {
                 this.board[i][j] = 0;
              } 
         }
+        //Clears all visual symbols off board.
         divElems.forEach(divEle => {  //#2
             if(divEle.hasChildNodes()) {
                 divEle.removeChild(divEle.firstChild);
             }
         });
-
+        //Recreates all box nodes to remove eventlisteners.
         divElems.forEach(divEle => { //#3
             divEle.replaceWith(divEle.cloneNode(true));
-            divEle.classList.add(`box`);
-            
         });
         divElems = document.querySelectorAll(`.box`); //**Important** This is needed, as the first query variable does not hold the newly created boxes.
     }
-
+    //Determines player turns and iterates count turn timer
     switchPlayer() {
         if (this.turn % 2 == 0) { //#4
             currentPlayer = this.playersArray[0];
