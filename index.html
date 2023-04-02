@@ -8,20 +8,40 @@
     <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-    <button id = "start">Start New Game</button>
+
+    <h1>TiC-TaC-ToE</h1>
+    <audio autoplay loop>
+        <source src="audio/Stranger Things.mp3"/>
+    </audio>
 
     <div id="container">
-        <div id="TL" class="box"></div>
-        <div id="TM" class="box"></div>
-        <div id="TR" class="box"></div>
-        <div id="ML" class="box"></div>
-        <div id="MM" class="box"></div>
-        <div id="MR" class="box"></div>
-        <div id="BL" class="box"></div>
-        <div id="BM" class="box"></div>
-        <div id="BR" class="box"></div>
+        <div id="TL" class="box even"></div>
+        <div id="TM" class="box odd"></div>
+        <div id="TR" class="box even"></div>
+        <div id="ML" class="box odd"></div>
+        <div id="MM" class="box even"></div>
+        <div id="MR" class="box odd"></div>
+        <div id="BL" class="box even"></div>
+        <div id="BM" class="box odd"></div>
+        <div id="BR" class="box even"></div>
     </div>
-    
+
+    <div id="antenna"></div>
+    <div id="walkie-talkie">
+        <blockquote id="screen"></blockquote>
+        <div id = "playerNames">
+            <p id="player1-name">Player1: Jay</p>
+            <p id = "player2-name">Player2: Marie</p>
+        </div>
+        <div id="buttons">
+            <button id = "start">Start New Game</button>
+            <button id = "reset">Reset Game</button>
+        </div>
+    </div>
+
+    <!-- <div id="right-console">Player2: </div> -->
+
     <script src="script.js"></script>
 </body>
 </html>
+
