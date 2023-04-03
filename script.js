@@ -3,6 +3,8 @@ let divElems = document.querySelectorAll(`.box`);
 const strtBttn = document.querySelector(`#start`);
 const resetBttn = document.querySelector(`#reset`);
 let controller = new AbortController();
+const radioAudio = new Audio("audio/static.mp3");
+const mainAudio = new Audio("audio/Stranger Things.mp3");
 //Buttons
 strtBttn.addEventListener(`click`, newGame);
 resetBttn.addEventListener(`click`, resetGame);
@@ -30,6 +32,9 @@ function symbolO(pos) { //function to place symbol O on board, div position is p
 
 
 function newGame() { // clears prev players, asks for new player names, resets board, and resets timer.
+    light1.style.backgroundColor = "#d3ff0d";
+    light2.style.backgroundColor = "gainsboro";
+    mainAudio.play();
     TicTacToe.removePlayers(); 
     TicTacToe.addPlayers();
     TicTacToe.resetBoard();
@@ -45,6 +50,8 @@ function resetGame() {
     }else {
         TicTacToe.resetBoard();
         TicTacToe.turn = 0;
+        light1.style.backgroundColor = "#d3ff0d";
+        light2.style.backgroundColor = "gainsboro";
         currentPlayer = TicTacToe.playersArray[0];
         controller = new AbortController();
         TicTacToe.setBoard();
@@ -191,7 +198,6 @@ class gameBoard {
             [0, 0, 0],
             [0, 0, 0]
         ];
-        
     }
 
     addPlayers() {  //Declares player objects and asks for player names.
@@ -200,6 +206,9 @@ class gameBoard {
 
         let p2Name = prompt("Please enter Player2's name");
         let player2 = new Player(p2Name, 2);
+
+        input1.innerText = " " + p1Name; //I'm not sure why I don't need a selector to select this element.
+        input2.innerText = " " + p2Name; //I am calling this straight from the html file.
         
         this.playersArray.push(player1);
         this.playersArray.push(player2);
@@ -215,6 +224,7 @@ class gameBoard {
         // Adds an EventListener to each div that will create an X or O when clicked, switch players, & assign a player value to the board array.
     divElems.forEach((divEle, divPos) => {
         divEle.addEventListener("click", () => {
+            radioAudio.play();
             TicTacToe.switchPlayer();
             console.log(currentPlayer);
             if (currentPlayer === TicTacToe.playersArray[0]) {
@@ -248,11 +258,18 @@ class gameBoard {
         });
         divElems = document.querySelectorAll(`.box`); //**Important** This is needed, as the first query variable does not hold the newly created boxes.
     }
-    //Determines player turns and iterates count turn timer
+    //Determines player turns, iterates count turn timer, and will change button color
     switchPlayer() {
-        if (this.turn % 2 == 0) { //#4
+        if (this.turn % 2 == 0) { 
             currentPlayer = this.playersArray[0];
-        }else currentPlayer = this.playersArray[1];
+            light1.style.backgroundColor = "gainsboro"; //These switch the lights on the walkie-talkie
+            light2.style.backgroundColor = "#d3ff0d";
+        }else {
+            currentPlayer = this.playersArray[1];
+            light1.style.backgroundColor = "#d3ff0d";
+            light2.style.backgroundColor = "gainsboro";
+            
+        } 
         this.turn++;
         return currentPlayer;
     }
