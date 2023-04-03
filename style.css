@@ -28,7 +28,7 @@ h1 {
     0px 1px 0px #a32620;
 }
 
-#screen {
+#screen { /*Walkie talkie screen */
    background-color: #bcd60e;
    border: 2px solid gray;
    width: 210px;
@@ -37,7 +37,7 @@ h1 {
    grid-area: 1 / span 2;   
 }
 
-#light1 {
+#light1 { /*Walkie talkie light*/
     margin-top: 5px;
     height: 20px;
     width: 20px;
@@ -47,7 +47,7 @@ h1 {
     border: 2px solid whitesmoke;
 }
 
-#light2 {
+#light2 { /*Walkie talkie screen*/
     margin-top: 5px;
     height: 20px;
     width: 20px;
@@ -57,19 +57,19 @@ h1 {
     border: 2px solid whitesmoke;
 }
 
-#light-cont1 {
+#light-cont1 { /*Walkie talkie light containers */
     grid-area: 1;
     align-self: center;
     text-align: center;
 }
 
-#light-cont2 {
+#light-cont2 { 
     grid-area: 2;
     align-self: center;
     text-align: center;
 }
 
-#player-name-container {
+#player-name-container { /*Walkie-Talkie div*/
     display: grid;
     grid-template-columns: 50px 1fr;
     grid-template-rows: 1fr 1fr;
@@ -77,18 +77,18 @@ h1 {
     margin-bottom: 120px;
 }
 
-#player1-name {
+#player1-name { /*Walkie-Talkie div*/
     padding: auto;
     grid-area: 1 / 2;
 }
 
-#player2-name {    
+#player2-name {  /*Walkie-Talkie div*/
     padding: auto;
     grid-area: 2 / 2;
 
 }
 
-#buttons {
+#buttons { /*Walkie-Talkie div container*/
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -97,7 +97,7 @@ h1 {
     
 }
 
-#start, #reset {
+#start, #reset {  /*Walkie-Talkie buttons*/
     height: 40px;
     width: 120px;
     background-color: #6e7774;
@@ -105,7 +105,7 @@ h1 {
     border: 2px solid black;
 }
 
-#antenna {
+#antenna { /*Walkie-Talkie antenna*/
     background-color: black;
     width: 33px;
     margin-left: 90px;
@@ -113,7 +113,7 @@ h1 {
     border-left: 1px solid gray;
 }
 
-#walkie-talkie {
+#walkie-talkie { /*Walkie-Talkie container-body */
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 2fr 1fr 1fr;
@@ -131,9 +131,12 @@ h1 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    box-shadow: 10px 10px 7px black inset, 5px 4px 25px #a32620;
 }
 
-#right-console {
+/*Could be used for future update*/
+
+/* #right-console {
     grid-area: 2 / 3 / auto / 4;
     place-self: end;
     align-self: self-start;
@@ -148,10 +151,10 @@ h1 {
     background-repeat: no-repeat;
     background-position: center;
     opacity: 0.0;
-}
+} */
 
 
-#container {
+#container { /*Tic-Tac-Board Container*/
     grid-row-start: 2;
     grid-column-start: 2;
     justify-self:  center;
@@ -159,6 +162,7 @@ h1 {
     width: fit-content;
     height: fit-content;
     border: 10px solid black;
+    box-shadow: 10px 10px 7px black inset, 5px 4px 25px #a32620;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
@@ -168,12 +172,13 @@ h1 {
                          "BL BM BR";
 }
 
-.box {
+.box { /* class for each of the 9 Tic-Tac-Toe boxes below*/
     display: flex;
     justify-content: center;
     align-items: center;
     width: 150px;
     height: 150px;
+    box-shadow: 10px 10px 25px black inset, 5px 4px 25px #a32620;
 }
 
 #TL {

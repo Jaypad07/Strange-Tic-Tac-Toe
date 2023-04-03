@@ -207,8 +207,8 @@ class gameBoard {
         let p2Name = prompt("Please enter Player2's name");
         let player2 = new Player(p2Name, 2);
 
-        input1.innerText = " " + p1Name; //I'm not sure why I don't need a selector to select this element.
-        input2.innerText = " " + p2Name; //I am calling this straight from the html file.
+        input1.innerText = "  " + p1Name; //I'm not sure why I don't need a selector to select this element.
+        input2.innerText = "  " + p2Name; //I am calling this straight from the html file.
         
         this.playersArray.push(player1);
         this.playersArray.push(player2);
