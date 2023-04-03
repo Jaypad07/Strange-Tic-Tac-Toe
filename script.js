@@ -51,17 +51,10 @@ function resetGame() {
     }
 }
 
-// function gameOver() {
-//     if (TicTacToe.turn === 9) {
-//         alert("The game has ended in a Tie! Start New Game to play again");
-//         controller.abort();
-//     } 
-// }
-
 function displayWinner(num) {
     controller.abort();
     if (num === 1) {
-        alert(currentPlayer.name + " wins the game!"); //Can I change a font inside an alert? Display actual player name wins
+        alert(currentPlayer.name + " wins the game!");
     }else alert(currentPlayer.name + " wins the game!");
 }
 
@@ -231,8 +224,6 @@ class gameBoard {
                 symbolO(divEle);
                 gamePoints(divPos, 2);
             }
-            // console.log(TicTacToe.playersArray); *** DEBUG PURPOSES - REMOVE WHEN READY
-            // console.log(TicTacToe.board); ***REMOVE WHEN READY
         }, {once: true, signal: controller.signal}); 
     });
     }
