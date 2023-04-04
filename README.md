@@ -15,8 +15,10 @@ This was my first project using HTML, CSS, and Javascript. I was tasked at desig
 >* You can use GitHub Pages for deploying your project
 >* Use semantic markup for HTML and CSS (adhere to best practices)
 >* Have well-formatted, and well-commented code
-## Installation:
-This is a simple browser based game that can be accessed through this link: [Stranger Things Tic-Tac-Toe]() ----NEEDS TO BE UPDATED WHEN POSTED TO GITHUBPAGES.
+
+## Getting Started:
+This is a simple browser based game that can be accessed through this link: [Strange-Tic-Tac-Toe](https://jaypad07.github.io/Strange-Tic-Tac-Toe/)
+
 ![GamePreview](https://i.imgur.com/aW7SpB3.jpeg)
 
 ## Technology/Tools used:
