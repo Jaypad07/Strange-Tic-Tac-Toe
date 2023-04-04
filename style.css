@@ -20,7 +20,7 @@ body {
 }
 
 h1 {
-    font-family: strangerthings;
+    font-family: strangerthings, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
     justify-content: center;
     color: black;
@@ -272,6 +272,7 @@ h1 {
     100% {
         width: 260px;
     }
+    
     99% {
         border-color: black;
       }
@@ -280,7 +281,7 @@ h1 {
       }
   }
 
-.SOS {
+.SOS { /* Code for typing Animation */
     font-size: 13px;
     font-weight: bold;
     line-height: 10px;
