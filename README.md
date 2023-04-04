@@ -17,7 +17,7 @@ This was my first project using HTML, CSS, and Javascript. I was tasked at desig
 >* Have well-formatted, and well-commented code
 ## Installation:
 This is a simple browser based game that can be accessed through this link: [Stranger Things Tic-Tac-Toe]() ----NEEDS TO BE UPDATED WHEN POSTED TO GITHUBPAGES.
-![GamePreview](https://i.imgur.com/c8LD6U8.jpeg)
+![GamePreview](https://i.imgur.com/aW7SpB3.jpeg)
 
 ## Technology/Tools used:
 * [Git Bash](https://gitforwindows.org/) - to traverse the file system, execute system functions, and to interact with my GitHub repository.
@@ -73,13 +73,13 @@ This is a simple browser based game that can be accessed through this link: [Str
 * Add sound effects.
 * Random Selection of who goes first.
 * Add HI-SCORE: When the game is over boxes change to a black arcade screen, this will show Hi-Scores. Back-end keeps track of most consecutive wins, draws, wins, ties, & turns?
-* *Help!* Display story of Eleven stuck in the upside-down world, telepathically communicating/writing through the walkie-talkie on screen. *Radio crackles, it's Eleven. She's stuck in the upside down. Story continues about you needing to help her. Both players want to help and agree that the winner of a best of 5 tic-tac-toe game goes to the upside down world to rescue her while the other stays behind for help.* Use filereader to read from text file that contains story. Story will display letters at a reduced rate to symbolize weak connection. 
+* *Help!* Display story of Eleven stuck in the Upside-Down, telepathically communicating/writing through the walkie-talkie on screen. *Radio crackles, it's Eleven. She's stuck in the upside down. Story continues about you needing to help her. Both players want to help and agree that the winner of a best of 5 tic-tac-toe game goes to the upside down world to rescue her while the other stays behind for help.* Use filereader to read from text file that contains story. Story will display letters at a reduced rate to symbolize weak connection. 
 
 ### Gold:
 
 * Create an algorithm for a computer controlled opponent.
 * Enhanced Tic-Tac-Toe? Create different rule set? Change rules to make game more strategic / exciting?
-* Upside-down world: Screen goes black board flips 180 degree, screen comes off black, lightning/thunder sounds, you have a limited amount of time to click? Symbols become translucent?
+* Upside Down dimension: Screen goes black board flips 180 degree, screen comes off black, lightning/thunder sounds, you have a limited amount of time to click? Symbols become translucent?
 * Use power-ups that are obtained from taking one of the 4 disadvantageous tiles . Power-up ideas, random swap, random enemy symbol destruction, etc. Vecna image is hidden on the board, if you hit him the screen goes black for a second, you hear him laugh, the board rotated and when it returns the pieces are invisible. You only get one click?
 * Add animations.
 
@@ -91,11 +91,16 @@ This is a simple browser based game that can be accessed through this link: [Str
   <img src="https://i.imgur.com/dWjHdjP.png" width="150" /> 
   <img src="https://i.imgur.com/L6DFuAm.png" width="150" />
   <img src="https://i.imgur.com/K7Er3PT.png" width="170" height="190" />
-  <img src="https://i.imgur.com/RcInb7K.png" width="170" height="190" /> 
+  <img src="https://i.imgur.com/RcInb7K.png" width="170" height="190" />
+  <img src="images/GamePreview.jpg" width="170" height="190" /> 
 </p>
 
 
-
+## Wall of Thanks!
+* Obinna - Always kept me laughing with his jokes.
+* Lorena - some style/color advise.
+* Kevin - always there to answer questions.
+* Jeff - I couldn't have done the blinking cursor code on the walkie-talkie screen without him. It's his creation and his help was invaluable. Thank you!! 
 
 ## Background Artists:
 ##### wall.alphacoders.com  

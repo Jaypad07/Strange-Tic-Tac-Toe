@@ -5,9 +5,16 @@ const resetBttn = document.querySelector(`#reset`);
 let controller = new AbortController();
 const radioAudio = new Audio("audio/static.mp3");
 const mainAudio = new Audio("audio/Stranger Things.mp3");
+const walkieScreen = document.querySelector("#screen");
+const insideText = document.createElement("blockquote");
 //Buttons
 strtBttn.addEventListener(`click`, newGame);
 resetBttn.addEventListener(`click`, resetGame);
+
+//
+
+
+
 
 //FUNCTIONS
 function symbolX(pos) { //function to place symbol X on board, div position is passed.
@@ -32,8 +39,9 @@ function symbolO(pos) { //function to place symbol O on board, div position is p
 
 
 function newGame() { // clears prev players, asks for new player names, resets board, and resets timer.
-    light1.style.backgroundColor = "#d3ff0d";
+    light1.style.backgroundColor = "#d3ff0d"; //Walkie talkie lights added late will add method for them.
     light2.style.backgroundColor = "gainsboro";
+    light1.style.boxShadow = "10px 10px 7px #d3ff0d inset, 5px 4px 25px #d3ff0d";
     mainAudio.play();
     TicTacToe.removePlayers(); 
     TicTacToe.addPlayers();
@@ -51,6 +59,7 @@ function resetGame() {
         TicTacToe.resetBoard();
         TicTacToe.turn = 0;
         light1.style.backgroundColor = "#d3ff0d";
+        light1.style.boxShadow = "10px 10px 7px #d3ff0d inset, 5px 4px 25px #d3ff0d";
         light2.style.backgroundColor = "gainsboro";
         currentPlayer = TicTacToe.playersArray[0];
         controller = new AbortController();
@@ -262,12 +271,16 @@ class gameBoard {
     switchPlayer() {
         if (this.turn % 2 == 0) { 
             currentPlayer = this.playersArray[0];
-            light1.style.backgroundColor = "gainsboro"; //These switch the lights on the walkie-talkie
+            light1.style.backgroundColor = "gainsboro"; //These switch the lights on the walkie-talkie. Added late, will add method for them soon.
             light2.style.backgroundColor = "#d3ff0d";
+            light1.style.boxShadow = "";
+            light2.style.boxShadow = "10px 10px 7px #d3ff0d inset, 5px 4px 25px #d3ff0d";
         }else {
             currentPlayer = this.playersArray[1];
             light1.style.backgroundColor = "#d3ff0d";
             light2.style.backgroundColor = "gainsboro";
+            light2.style.boxShadow = "";
+            light1.style.boxShadow = "10px 10px 7px #d3ff0d inset, 5px 4px 25px #d3ff0d";
             
         } 
         this.turn++;
