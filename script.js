@@ -91,7 +91,7 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
             break;
            }else if (TicTacToe.turn === 9) {
             tieAudio.play();
-            alert("The game has ended in a Tie! Start New Game to play again");
+            alert("The game has ended in a Tie! Reset Game to play again");
             }
             break;
         case 1 :
@@ -104,7 +104,7 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
                 break;
                }else if (TicTacToe.turn === 9) {
                 tieAudio.play();
-                alert("The game has ended in a Tie! Start New Game to play again");
+                alert("The game has ended in a Tie! Reset Game to play again");
                } 
             break;
         case 2 :
@@ -120,7 +120,7 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
                 break;
                }else if (TicTacToe.turn === 9) {
                 tieAudio.play();
-                alert("The game has ended in a Tie! Start New Game to play again");
+                alert("The game has ended in a Tie! Reset Game to play again");
                } 
             break;
         case 3 :
@@ -133,7 +133,7 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
                 break;
                }else if (TicTacToe.turn === 9) {
                 tieAudio.play();
-                alert("The game has ended in a Tie! Start New Game to play again");
+                alert("The game has ended in a Tie! Reset Game to play again");
                } 
             break;
         case 4 :
@@ -151,7 +151,7 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
                 displayWinner(num);
                }else if (TicTacToe.turn === 9) {
                 tieAudio.play();
-                alert("The game has ended in a Tie! Start New Game to play again");
+                alert("The game has ended in a Tie! Reset Game to play again");
                } 
             break;
         case 5 :
@@ -164,7 +164,7 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
                 break;
                }else if (TicTacToe.turn === 9) {
                 tieAudio.play();
-                alert("The game has ended in a Tie! Start New Game to play again");
+                alert("The game has ended in a Tie! Reset Game to play again");
                } 
             break;
         case 6 :
@@ -180,7 +180,7 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
                 break;
                }else if (TicTacToe.turn === 9) {
                 tieAudio.play();
-                alert("The game has ended in a Tie! Start New Game to play again");
+                alert("The game has ended in a Tie! Reset Game to play again");
                } 
             break;
         case 7 :
@@ -193,7 +193,7 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
                 break;
                }else if (TicTacToe.turn === 9) {
                 tieAudio.play();
-                alert("The game has ended in a Tie! Start New Game to play again");
+                alert("The game has ended in a Tie! Reset Game to play again");
                } 
             break;
         case 8 :
@@ -209,7 +209,7 @@ function gamePoints(divPos, num) { //This function assigns a player value to the
                 break;
                }else if (TicTacToe.turn === 9) {
                 tieAudio.play();
-                alert("The game has ended in a Tie! Start New Game to play again");
+                alert("The game has ended in a Tie! Reset Game to play again");
                } 
             break;
     
