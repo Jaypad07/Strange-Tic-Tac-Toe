@@ -3,18 +3,21 @@
 ## Description:  
 This was my first project using HTML, CSS, and Javascript. I was tasked at designing a Tic-Tac-Toe game from scratch, that two local players could have fun with. The requirements stated were as follows:
 
-> ###### Your Tic Tac Toe app must:
->
->* Render a game board in the browser  
->* Switch turns between X and O (or whichever markers you select)
->* Visually display which side won if a player gets three in a row, or show a draw if neither player wins
->* Include separate HTML / CSS / JavaScript files
->* Stick with KISS (Keep It Simple Stupid) and DRY (Don't Repeat Yourself) principles
->* Use JavaScript for DOM manipulation
->* Deploy your game online, where the rest of the world can access it
->* You can use GitHub Pages for deploying your project
->* Use semantic markup for HTML and CSS (adhere to best practices)
->* Have well-formatted, and well-commented code
+This Stranger Things-themed Tic-Tac-Toe game is a result of my first project using HTML, CSS, and JavaScript. The objective was to design and build a fully functional game from scratch that two local players could enjoy.
+
+Throughout the development process, I utilized various tools and resources to aid in the creation of this game. Git Bash allowed me to navigate the file system, execute system functions, and interact with my GitHub repository. I used WireFrame.cc to conceptualize and design the front-end layout of the game. Visual Studio Code served as my code editor for writing HTML, CSS, and JavaScript code. To capture preview snapshots for this Readme document, I used ShareX, an image capture program.
+
+To enhance my CSS skills, I leveraged the interactive tutorials provided by Mastery.games, particularly Flexbox Zombies and Grid Critters. Additionally, I referred to the extensive documentation on JavaScript functions available on Developer.mozilla.org. Developer.chrome.com proved to be a valuable resource for learning and mastering Chrome DevTools, which greatly aided in the debugging and optimization of my code.
+
+The design and implementation process began with sketching a small design of the game. This was followed by creating a wireframe to visualize the layout and structure. The Tic-Tac-Toe board was implemented as a 3x3 grid using HTML div elements. Grid CSS and Flexbox were employed to organize the elements correctly, ensuring a responsive and visually appealing layout.
+
+I added CSS styling to the elements to ensure they were displayed correctly, capturing the essence of the Stranger Things theme. To determine the winner, I implemented a win logic by creating a 3x3 array that tracked the ownership of each box. The players and game board were represented by classes, allowing for efficient management of the game state.
+
+To enable player interaction, I implemented event listeners that allowed players to click on the elements to display their respective symbols (X or O). I carefully outlined and revised the necessary methods to ensure smooth gameplay and accurate win detection. Upon a player's victory, all clicks were disabled to prevent further interactions until the game was reset.
+
+A unique feature of the game is the inclusion of a walkie-talkie interface, designed using HTML and CSS. This interface displays player turns and provides start/reset buttons to control the game flow.
+
+Throughout the development process, I made numerous design implementations to enhance the overall user experience. I sourced wallpaper designs from AlphaCoders.com, ensuring appropriate credit to the artists and uploaders in a dedicated section of the game.
 
 ## Getting Started:
 This is a simple browser based game that can be accessed through this link: [Strange-Tic-Tac-Toe](https://jaypad07.github.io/Strange-Tic-Tac-Toe/)
