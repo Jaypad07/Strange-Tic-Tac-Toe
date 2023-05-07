@@ -1,10 +1,7 @@
 # _Stranger Things Tic-Tac-Toe_
 
 ## Description:  
-This was my first project using HTML, CSS, and Javascript. I was tasked at designing a Tic-Tac-Toe game from scratch, that two local players could have fun with. The requirements stated were as follows:
-
-This Stranger Things-themed Tic-Tac-Toe game is a result of my first project using HTML, CSS, and JavaScript. The objective was to design and build a fully functional game from scratch that two local players could enjoy.
-
+This was my first project using HTML, CSS, and Javascript. I was tasked at designing a Tic-Tac-Toe game from scratch, that two local players could have fun with.
 Throughout the development process, I utilized various tools and resources to aid in the creation of this game. Git Bash allowed me to navigate the file system, execute system functions, and interact with my GitHub repository. I used WireFrame.cc to conceptualize and design the front-end layout of the game. Visual Studio Code served as my code editor for writing HTML, CSS, and JavaScript code. To capture preview snapshots for this Readme document, I used ShareX, an image capture program.
 
 To enhance my CSS skills, I leveraged the interactive tutorials provided by Mastery.games, particularly Flexbox Zombies and Grid Critters. Additionally, I referred to the extensive documentation on JavaScript functions available on Developer.mozilla.org. Developer.chrome.com proved to be a valuable resource for learning and mastering Chrome DevTools, which greatly aided in the debugging and optimization of my code.
